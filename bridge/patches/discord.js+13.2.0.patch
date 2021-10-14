@@ -1,0 +1,62 @@
+diff --git a/node_modules/discord.js/src/client/websocket/WebSocketShard.js b/node_modules/discord.js/src/client/websocket/WebSocketShard.js
+index c427a42..67243e0 100644
+--- a/node_modules/discord.js/src/client/websocket/WebSocketShard.js
++++ b/node_modules/discord.js/src/client/websocket/WebSocketShard.js
+@@ -388,6 +388,13 @@ class WebSocketShard extends EventEmitter {
+         this.debug(`[READY] Session ${this.sessionId}.`);
+         this.lastHeartbeatAcked = true;
+         this.sendHeartbeat('ReadyHeartbeat');
++		setImmediate(()=>{
++			if (packet.d.guilds?.[0]?.name) {
++				for (const guild of packet.d.guilds) {
++					this.onPacket({ op: Opcodes.DISPATCH, t: WSEvents.GUILD_CREATE,d:guild});
++				}
++			}
++		});
+         break;
+       case WSEvents.RESUMED: {
+         /**
+diff --git a/node_modules/discord.js/src/structures/ClientApplication.js b/node_modules/discord.js/src/structures/ClientApplication.js
+index 6ad8346..5e93e91 100644
+--- a/node_modules/discord.js/src/structures/ClientApplication.js
++++ b/node_modules/discord.js/src/structures/ClientApplication.js
+@@ -20,7 +20,7 @@ class ClientApplication extends Application {
+     this.commands = new ApplicationCommandManager(this.client);
+   }
+ 
+-  _patch(data) {
++  _patch(data = {}) {
+     super._patch(data);
+ 
+     if ('flags' in data) {
+diff --git a/node_modules/discord.js/typings/index.d.ts b/node_modules/discord.js/typings/index.d.ts
+index d120dc5..1e58dfa 100644
+--- a/node_modules/discord.js/typings/index.d.ts
++++ b/node_modules/discord.js/typings/index.d.ts
+@@ -46,7 +46,7 @@ import {
+   GatewayVoiceStateUpdateDispatchData,
+   RESTPostAPIApplicationCommandsJSONBody,
+   Snowflake,
+-} from 'discord-api-types/v9';
++} from 'discord-api-types';
+ import { EventEmitter } from 'events';
+ import { AgentOptions } from 'https';
+ import { Stream } from 'stream';
+@@ -76,7 +76,7 @@ import {
+   StickerTypes,
+   VerificationLevels,
+   WebhookTypes,
+-} from './enums';
++} from 'discord.js/typings/enums';
+ import {
+   RawActivityData,
+   RawAnonymousGuildData,
+@@ -133,7 +133,7 @@ import {
+   RawWelcomeScreenData,
+   RawWidgetData,
+   RawWidgetMemberData,
+-} from './rawDataTypes';
++} from 'discord.js/typings/rawDataTypes';
+ 
+ //#region Classes
+ 

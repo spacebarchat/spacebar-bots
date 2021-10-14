@@ -9,7 +9,7 @@ const client = new Client({
 });
 
 client.on("ready", () => {
-	console.log(`Client ready ${client.user?.tag}`);
+	console.log(`Client ready ${client.user?.tag} on ${client.options.http?.api}`);
 });
 // client.on("debug", console.log);
 client.on("error", console.log);

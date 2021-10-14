@@ -16,6 +16,5 @@ export class Shard extends DJSShard {
 			endpoint: opts.endpoint,
 			SHARD_COUNT: this.manager.options.applications.length,
 		};
-		console.log(opts.endpoint);
 	}
 }

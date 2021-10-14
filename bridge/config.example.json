@@ -1,3 +1,12 @@
 {
-	"applications": []
+	"applications": [
+		{
+			"endpoint": "https://dev.fosscord.com/api",
+			"token": ""
+		},
+		{
+			"endpoint": "https://discord.com/api",
+			"token": ""
+		}
+	]
 }

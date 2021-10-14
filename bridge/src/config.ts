@@ -33,7 +33,8 @@ var config: Config = {
 try {
 	config = JSON.parse(fs.readFileSync(configPath, { encoding: "utf8" }));
 } catch (error) {
-	console.error(`Please create config file`);
+	console.error(`Please create a config file`);
+	process.exit();
 }
 
 export default config;
