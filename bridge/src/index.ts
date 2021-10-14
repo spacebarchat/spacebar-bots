@@ -1,6 +1,9 @@
-import { ShardingManager } from "discord.js";
+import path from "path";
+import { ClientManager } from "./ClientManager";
 
-const manager = new ShardingManager("./bot.js", { token: process.env.TOKEN });
+import config from "./config";
+
+const manager = new ClientManager({ file: path.join(__dirname, "bot.js"), applications: config.applications });
 
 manager.on("shardCreate", (shard) => console.log(`Launched shard ${shard.id}`));
 

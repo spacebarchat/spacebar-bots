@@ -4,18 +4,37 @@ import path from "path";
 const configPath = path.join(__dirname, "..", "config.json");
 
 export interface Config {
-	applications: {
-		endpoint: string;
-	}[];
+	applications: Credentials[];
+	bridges: Bridge[];
+}
+
+export interface Bridge {
+	from_guild: string;
+	to_guild: string;
+	excluded: {
+		messages: boolean;
+		users: string[];
+		channels: string[] | boolean;
+		emojis: string[] | boolean;
+	};
+	// TODO: additional bridging options
+}
+
+export interface Credentials {
+	endpoint: string;
+	token: string;
 }
 
 var config: Config = {
 	applications: [],
+	bridges: [],
 };
 
 try {
 	config = JSON.parse(fs.readFileSync(configPath, { encoding: "utf8" }));
-} catch (error) {}
+} catch (error) {
+	console.error(`Please create config file`);
+}
 
 export default config;
 
