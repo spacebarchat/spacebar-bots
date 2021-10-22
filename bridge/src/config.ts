@@ -23,6 +23,8 @@ export interface Bridge {
 export interface Credentials {
 	endpoint: string;
 	token: string;
+	id: number;
+	name: string;
 }
 
 var config: Config = {
@@ -40,5 +42,7 @@ try {
 export default config;
 
 export function save() {
-	return writeFileAtomic(configPath, JSON.stringify(config, null, "\t"), { encoding: "utf8" });
+	return writeFileAtomic(configPath, JSON.stringify(config, null, "\t"), {
+		encoding: "utf8",
+	});
 }

@@ -1,5 +1,7 @@
 {
 	"compilerOptions": {
+		"experimentalDecorators": true,
+
 		/* Visit https://aka.ms/tsconfig.json to read more about this file */
 
 		/* Projects */
@@ -95,6 +97,9 @@
 
 		/* Completeness */
 		// "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
-		"skipLibCheck": true /* Skip type checking all .d.ts files. */
+		"skipLibCheck": true /* Skip type checking all .d.ts files. */,
+		//"javascript.implicitProjectConfig.experimentalDecorators": true,
+		"strictPropertyInitialization": false,
+		"emitDecoratorMetadata": true
 	}
 }
