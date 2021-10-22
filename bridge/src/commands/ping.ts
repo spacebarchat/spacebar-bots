@@ -1,5 +1,5 @@
 import { Message } from "discord.js";
-const { Command } = require("./../../../../discord-akairo");
+import { Command } from "discord-akairo";
 
 class PingCommand extends Command {
 	constructor() {
