@@ -13,10 +13,16 @@
 	"author": "",
 	"license": "AGPLV3",
 	"dependencies": {
+		"discord-akairo": "github:TimSchweiz/discord-akairo",
 		"discord.js": "^13.2.0",
+		"node-fetch": "^2.6.5",
+		"reflect-metadata": "^0.1.13",
+		"sqlite3": "^4.2.0",
+		"typeorm": "^0.2.38",
 		"write-file-atomic": "^3.0.3"
 	},
 	"devDependencies": {
+		"@types/node-fetch": "^3.0.3",
 		"@types/write-file-atomic": "^3.0.2",
 		"dotenv": "^10.0.0",
 		"patch-package": "^6.4.7",
