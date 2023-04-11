@@ -18,7 +18,7 @@
 		"node-fetch": "^2.6.5",
 		"reflect-metadata": "^0.1.13",
 		"sqlite3": "^4.2.0",
-		"typeorm": "^0.2.38",
+		"typeorm": "^0.3.14",
 		"write-file-atomic": "^3.0.3"
 	},
 	"devDependencies": {
